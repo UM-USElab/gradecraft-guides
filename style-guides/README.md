@@ -5,7 +5,7 @@ A set of guides for languages and frameworks used within [GradeCraft](http://gra
 
 ## Table of Contents
 
-* [Ruby]
-* [Rails]
-* [JavaScript]
-* [Angular]
+* [Ruby](/ruby)
+* [Rails](/rails)
+* [JavaScript](/javascript)
+* [Angular](/angular)
