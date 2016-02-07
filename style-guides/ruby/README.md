@@ -9,6 +9,9 @@ A style guide for writing Ruby for [GradeCraft](http://gradecraft.com).
    1. [Indentation](#indentation)
    1. [Inline](#inline)
 1. [Commenting](#commenting)
+   1. [Class-level comments](#class-level-comments)
+   1. [Method comments](#method-comments)
+   1. [Inline comments](#inline-comments)
 1. [Naming](#naming)
 1. [File structure](#file-structure)
    1. Line length
@@ -112,6 +115,52 @@ courses(student).length
 ```
 
 ## Commenting
+
+The best code is self-documenting. This can be achieved through sensible [naming](#naming). However, code comments can be helpful when describing the reason behind a decision. Comments that describe what the code is doing is a red flag that should lead to refactoring the code to make it self-documenting.
+
+* **Avoid organizational comments** These tend to get out of whack and it's more important to put methods in alphabetical order for finding the code easier.
+
+```
+# bad
+class Course
+  # Validations
+
+  # Query
+end
+```
+
+### Class-level comments
+
+Every class definition should have an accompanying comment that describes what it is for and how it should be used. This helps create [readme-driven development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html) and create focused, single-responsibility classes.
+
+```
+# Identifies a series of assignments and grades for a specific subject for a collection of students.
+class Course
+  # ...
+end
+```
+
+### Method comments
+
+Every function declaration should have comments immediately preceding it that describe what the function does and how to use it. The comment describes the function, it does not tell the function what to do. In general, these comments do not describe how the function performs its task.
+
+```
+# Returns a boolean to indicate if the student is passing the course based on the current criteria.
+def passing?
+  # ...
+end
+```
+
+### Inline comments
+
+Inline comments should be used sparingly. It should not describe what the code does. If you feel this is neeed, refactor the code so that it is self-documenting. It can describe the reason behind what the code does. If you feel you will need to explain why in a code review, that would make a good inline comment.
+
+```
+def copy(options={})
+  # save the copy so that the associations can be automatically inserted
+  copy.save if self.persisted?
+end
+```
 
 ## Naming
 
