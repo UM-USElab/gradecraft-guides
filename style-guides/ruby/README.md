@@ -12,6 +12,7 @@ A style guide for writing Ruby for [GradeCraft](http://gradecraft.com).
    1. [Class-level comments](#class-level-comments)
    1. [Method comments](#method-comments)
    1. [Inline comments](#inline-comments)
+   1. [TODO comments](#todo-comments)
 1. [Naming](#naming)
 1. [File structure](#file-structure)
    1. Line length
@@ -118,6 +119,8 @@ courses(student).length
 
 The best code is self-documenting. This can be achieved through sensible [naming](#naming). However, code comments can be helpful when describing the reason behind a decision. Comments that describe what the code is doing is a red flag that should lead to refactoring the code to make it self-documenting.
 
+* **Never leave commented-out code in codebase** Commented out code can lead to a maintenance issue. Git can provide the history for old code and therefore, it should never be left in the codebase.
+
 * **Avoid organizational comments** These tend to get out of whack and it's more important to put methods in alphabetical order for finding the code easier.
 
 ```
@@ -160,6 +163,28 @@ def copy(options={})
   # save the copy so that the associations can be automatically inserted
   copy.save if self.persisted?
 end
+```
+
+### TODO comments
+
+TODO comments should be used sparingly. They can be used for a short-term solution or solutions that will need some refactoring. They should not be used for large features or features that need more than one line to explain. These should be added as issues and the TODO should be removed.
+
+* **A TODO comment should be in all caps** This will make it easy for searching and will not interfere with code.
+* **A TODO comment should be followed by the GitHub username in paranthesis** This is so future readers know who is responsible and the name is easily found by others.
+
+```
+# bad - no explaniation given
+# TODO (jwright):
+
+# bad - too long of an explination, should be an issue
+# TODO (jwright): This is an indication that this class has too much responsibility and it should be broken out in
+# a course for students and a course for teachers. These methods....
+
+# bad - no responsibility
+# TODO: this needs to be refactored when we have the memberships implemented
+
+# good
+# TODO (jwright): this needs to change to use symbols as retrieved from the database
 ```
 
 ## Naming
